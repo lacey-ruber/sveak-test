@@ -1,0 +1,138 @@
+.task-3 {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 15px 15px 15px;
+  }
+  &__btn {
+    cursor: pointer;
+    margin: 1rem 0 0 0;
+    width: 100%;
+    max-width: 120px;
+    height: 33px;
+    border-radius: 5px;
+    font-weight: 600;
+    white-space: nowrap;
+    background: #333333;
+    color: #fff;
+  }
+}
+
+.table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 950px;
+  table-layout: fixed;
+
+  &__title {
+    font-size: 18px;
+    margin: 1rem 0;
+  }
+
+  &__thead {
+    tr {
+      position: sticky;
+      top: 0;
+      background-color: #f8f8f8;
+    }
+    th {
+      text-transform: uppercase;
+    }
+  }
+  &__tbody {
+    th {
+      font-weight: 400;
+    }
+  }
+
+  tr {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+  }
+
+  th,
+  td {
+    padding: 8px;
+    text-align: center;
+  }
+
+  th {
+    font-size: 12px;
+  }
+}
+
+// цвета
+
+#line {
+  &-1 {
+    background-color: #cfe2ff;
+  }
+  &-2 {
+    background-color: #f8d7da;
+  }
+  &-3 {
+    background-color: #d1e7dd;
+  }
+  &-4 {
+    background-color: #fff3cd;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .table {
+    border: 0;
+
+    &__thead {
+      border: none;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+    }
+
+    tr {
+      border-bottom: 3px solid #ddd;
+      display: block;
+      margin-bottom: 10px;
+    }
+    td {
+      border-bottom: 1px solid #ddd;
+      display: block;
+      font-size: 12px;
+      text-align: right;
+
+      &::before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+      &:last-child {
+        border-bottom: 0;
+      }
+    }
+    th {
+      border-bottom: 1px solid #ddd;
+      display: block;
+      font-size: 12px;
+      text-align: right;
+
+      &::before {
+        content: attr(data-label);
+        float: left;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+      &:last-child {
+        border-bottom: 0;
+      }
+    }
+  }
+}

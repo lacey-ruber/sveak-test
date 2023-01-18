@@ -1,0 +1,90 @@
+.task-6 {
+  margin: 0 auto;
+  &__content {
+    margin-top: 50px;
+    padding: 0 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__icon {
+    display: inline-block;
+    vertical-align: middle;
+    @keyframes icon-up {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-8px);
+      }
+      60% {
+        transform: translateY(0);
+      }
+      70% {
+        transform: translateY(-4px);
+      }
+      80% {
+        transform: translateY(0);
+      }
+      90% {
+        transform: translateY(-4px);
+      }
+    }
+    &.active {
+      animation-name: icon-up;
+      animation-duration: 2s;
+      animation-timing-function: ease-out;
+      animation-iteration-count: infinite;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    button {
+      cursor: pointer;
+      width: 166px;
+      height: 32px;
+      background: #0066ff;
+      border-radius: 20px;
+      margin: 28px 24px 0 0;
+      &:last-child {
+        margin: 28px 0 0 0;
+      }
+    }
+    span {
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 100%;
+      letter-spacing: 0.5px;
+      color: #fff;
+    }
+  }
+}
+.btn-start {
+  text-transform: capitalize;
+}
+.line {
+  &-1 {
+    path {
+      fill: #cfe2ff;
+    }
+  }
+  &-2 {
+    path {
+      fill: #f8d7da;
+    }
+  }
+  &-3 {
+    path {
+      fill: #d1e7dd;
+    }
+  }
+  &-4 {
+    path {
+      fill: #fff3cd;
+    }
+  }
+}

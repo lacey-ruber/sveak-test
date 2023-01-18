@@ -1,0 +1,227 @@
+.task-5 {
+  margin: auto;
+  width: 50%;
+  &__form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.progress {
+  position: relative;
+  background-color: #eee;
+  border-radius: 4px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 16px;
+  background-color: #d9534f;
+  border-radius: 4px;
+  transition: width 2s ease;
+}
+@mixin gradient-striped($color: rgb(#ffffff, 0.3), $angle: 45deg) {
+  background-image: -webkit-linear-gradient(
+    $angle,
+    $color 25%,
+    transparent 25%,
+    transparent 50%,
+    $color 50%,
+    $color 75%,
+    transparent 75%,
+    transparent
+  );
+  background-image: -o-linear-gradient(
+    $angle,
+    $color 25%,
+    transparent 25%,
+    transparent 50%,
+    $color 50%,
+    $color 75%,
+    transparent 75%,
+    transparent
+  );
+  background-image: linear-gradient(
+    $angle,
+    $color 25%,
+    transparent 25%,
+    transparent 50%,
+    $color 50%,
+    $color 75%,
+    transparent 75%,
+    transparent
+  );
+}
+
+@keyframes progress-bar-stripes {
+  from {
+    background-position: 30px 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+
+@mixin animation($animation) {
+  -webkit-animation: $animation;
+  -o-animation: $animation;
+  animation: $animation;
+}
+.progress.active .progress-bar,
+.progress-bar.active {
+  @include animation(progress-bar-stripes 2s linear infinite);
+}
+.progress-striped .progress-bar,
+.progress-bar-striped {
+  @include gradient-striped;
+  background-size: 30px 30px;
+}
+
+@media screen and (max-width: 300px) {
+  .task-5 {
+    &__btn {
+      margin: 2rem 0 0 0;
+    }
+    &__control {
+      flex-direction: column;
+    }
+  }
+}
+
+.js-form {
+  &__start {
+    margin-top: 2rem;
+  }
+  &__end {
+    margin-top: 2rem;
+    position: relative;
+    text-align: right;
+  }
+  &__field {
+    &-input {
+      width: 50px;
+      height: 40px;
+      border: none;
+      border-radius: 4px;
+      text-align: center;
+      font-size: 1.8rem;
+      border: 1px solid #ccc;
+      outline: none;
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      &[type='number'] {
+        -moz-appearance: textfield;
+      }
+    }
+  }
+  &__btn {
+    --btnTxt: #fff;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    min-height: 35px;
+    padding: 2px 20px;
+    background-color: #0066ff;
+    border-radius: 4px;
+    border: none;
+    font-size: 16px;
+    color: #fff;
+    text-align: center;
+    transition: color 200ms;
+
+    &:focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    &:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      display: block;
+      width: 0.7em;
+      height: 0.7em;
+      top: calc(50% - 0.5em);
+      left: calc(50% - 0.5em);
+      border: 2px var(--btnTxt);
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+      border-style: solid;
+      border-radius: 50%;
+      opacity: 0;
+      transition: opacity 200ms;
+    }
+
+    &[data-loading='true'] {
+      color: transparent;
+      pointer-events: none;
+
+      &::after {
+        opacity: 1;
+        animation: rotate 750ms linear infinite;
+      }
+
+      span {
+        visibility: hidden;
+      }
+    }
+  }
+  &__tooltip-block {
+    position: absolute;
+    width: 104px;
+    bottom: 100%;
+    left: calc(50% - 52px);
+    padding-bottom: 4px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 200ms, visibility 1ms 200ms;
+
+    span {
+      display: block;
+      background: #eee;
+      color: #000;
+      padding: 6px 8px;
+      border-radius: 4px;
+      text-align: center;
+      -webkit-font-smoothing: initial;
+      -moz-osx-font-smoothing: initial;
+    }
+
+    .js-form__tooltip.isActive:hover &,
+    .js-form__tooltip.isActive:focus-within & {
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 200ms;
+    }
+
+    .js-form__tooltip.isActive:hover & {
+      transition: opacity 200ms 200ms;
+    }
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.js-loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}

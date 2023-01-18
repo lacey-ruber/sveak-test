@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  @@include('html/head.html',{ "title":"Task 5" })
+  <body>
+    <div class="wrapper">
+      <div class="task-5">
+        <div class="progress progress-striped active">
+          <div class="progress-bar"></div>
+        </div>
+        <form class="task-5__form js-form">
+          <div class="js-form__start">
+            <div class="js-form__field">
+              <input
+                class="js-form__field-input js-field-input"
+                type="text"
+                required=""
+              />
+            </div>
+          </div>
+
+          <div class="js-form__end">
+            <div class="js-form__tooltip isActive">
+              <button
+                type="submit"
+                class="js-form__btn"
+                data-loading="false"
+                disabled=""
+              >
+                <span>Start</span>
+                <span class="js-loading"></span>
+              </button>
+
+              <div class="js-form__tooltip-block">
+                <span>Enter a value from 0 to 100</span>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="js/app.min.js"></script>
+  </body>
+</html>
